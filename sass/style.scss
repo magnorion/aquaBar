@@ -1,8 +1,81 @@
-#aqua-bar-container{
-  position: fixed;
+#social-bar-placement{
+  position:fixed;
   bottom: 0%;
   left: 0%;
   right: 0%;
-  height: 35px;
-  background: #000;
+  left:0%;
+  height:25px;
+  z-index: 99999999999999999 !important;
+  #aqua-bar-container{
+    width:100%;
+    top:100%;
+    opacity:0;
+    height: 35px;
+    position: absolute;
+    background: #000;
+    padding-left:10px;
+    padding-right:10px;
+    z-index: 99999999999999999 !important;
+    box-shadow:1px 1px 4px 1px #000;
+    #logo-social-bar{
+      background:url('img/cruzeiro_logo.png') no-repeat 100% 100%;
+      background-size: 100% 100%;
+      float: left;
+      margin-right: 15px;
+      cursor:pointer;
+      height: 100%;
+      width: 30px;
+      border-right: solid transparent 1px;
+      padding-right: 10px;
+    }
+    .social-button{
+      background:url('img/social-buttons.png');
+      float: left;
+      margin-right: 5px;
+      cursor:pointer;
+    }
+    .facebook-social-btn{
+      background-position:3% 28%;
+    }
+    .twitter-social-btn{
+      background-position:34% 28%;
+    }
+    .linkedin-social-btn{
+      background-position:65% 28%;
+    }
+    .google-social-btn{
+      background-position:96% 28%;
+    }
+    .open-arrow{
+      z-index:99 !important;
+    }
+    .social-arrow,.open-arrow{
+      float:right;
+      background:url('img/arrow.png') 100% 100% no-repeat;
+      background-position: -193% 40%;
+      cursor: pointer;
+      margin-right:10px;
+    }
+    .social-arrow,.social-button,.open-arrow{
+      height:100%;
+      width:35px;
+      z-index: 999 !important;
+    }
+  }
+  .open-arrow{
+    opacity:0;
+    display:none;
+    position: absolute;
+    right: 0%;
+    background-position: 280% 40% !important;
+    float:right;
+    background:url('img/arrow.png') 100% 100% no-repeat;
+    background-position: -193% 40%;
+    cursor: pointer;
+    margin-right:10px;
+    height:100%;
+    width:35px;
+    z-index: 99999 !important;
+    top:100%;
+  }
 }

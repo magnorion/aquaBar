@@ -16,6 +16,14 @@ module.exports = function(grunt){
         files:['css/*.css'],
         reload:true
       },
+      sass_admin:{
+        files:['admin/sass/*.scss'],
+        tasks:['sass']
+      },
+      css_admin:{
+        files:['admin/css/*.css'],
+        reload:true
+      },
       js_min:{
         files:['js/script.js'],
         tasks:['uglify']
@@ -23,12 +31,21 @@ module.exports = function(grunt){
       js:{
         files:['js/script.min.js'],
         reload:true
+      },
+      js_min_admin:{
+        files:['admin/js/script.js'],
+        tasks:['uglify']
+      },
+      js_admin:{
+        files:['admin/js/script.min.js'],
+        reload:true
       }
     },
     uglify:{
       target:{
         files:{
-          'js/script.min.js':'js/script.js'
+          'js/script.min.js':'js/script.js',
+          'admin/js/script.min.js':'admin/js/script.js'
         }
       }
     },
@@ -36,16 +53,20 @@ module.exports = function(grunt){
       dist:{
         options:{
           style:'compressed'
-        }
+        },
+        files:{
+          'css/style.css':'sass/style.scss',
+          'admin/css/style.css':'admin/sass/style.scss'
+        },
       },
-      files:{
-        'css/style.css':'sass/style.scss'
-      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('default',['watch']);
 }

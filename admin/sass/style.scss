@@ -1,0 +1,94 @@
+#config-place{
+  padding: 20px;
+  width: 90%;
+  height: auto;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px -1px #000;
+  form{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    position: relative;
+    div{
+      width: 45%;
+      float: left;
+      height: auto;
+      margin-bottom: 10px;
+      label{
+        font-weight: bold;
+        font-size: 14px;
+      }
+      input{
+        padding: 5px;
+        width: 80%;
+      }
+      label,input,span{
+        display:block;
+      }
+    }
+    #social-config-placement{
+      width: 100%;
+      position: relative;
+      ul{
+        margin: 0px;
+        padding: 0px;
+        height: 50px;
+        li{
+          background:url('img/social-buttons.png') 100% 100% no-repeat;
+          width: 39px;
+          height: 45px;
+          float:left;
+          margin-right: 5px;
+          border: solid transparent 1px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .selected{
+          border: solid #47C5DA 1px;
+        }
+        #facebook{
+          background-position:-2px 0px;
+        }
+        #twitter{
+          background-position:-40px 0px;
+        }
+        #linkedin{
+          background-position:-78px 0px;
+        }
+        #google{
+          background-position:-116px 0px;
+        }
+      }
+    }
+    button{
+      color: #FFF;
+      background: #47C5DA none repeat scroll 0% 0%;
+      border: medium none;
+      padding: 7px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0%;
+      right: 0%;
+    }
+  }
+  #msg-data-result{
+    width: 150px;
+    height: 35px;
+    padding: 10px;
+    z-index: 9999 !important;
+    border-left: solid #47C5DA 3px;
+    background: #fff;
+    position: fixed;
+    right: 1%;
+    top: 10%;
+    box-shadow: 0px 1px 3px -1px #000;
+    opacity: 0;
+    display: none;
+    p{
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  }
+}
