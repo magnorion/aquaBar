@@ -14,7 +14,7 @@
 
   $search_data = mysqli_query($con,"SELECT * FROM $table_name WHERE id = '1' ");
 
-  if(mysqli_num_rows($search_data) > 0){
+  if($search_data !== FALSE){
     $data = mysqli_fetch_array($search_data);
 
     $height = $data['tamanho'];

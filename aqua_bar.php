@@ -7,47 +7,49 @@
     Version: 1.0
   */
 
-  class aqua_bar{
+  class AquaBar{
     public function __construct(){
-      wp_enqueue_script('livereload','http://localhost:460/livereload.js'); // Remove this in the end!
       if(!is_admin()){
-        function aquaBar(){
-          wp_enqueue_script('aqua-bar-script',plugins_url('aqua_bar/js/script.min.js'));
-          wp_enqueue_style('aqua-bar-style',plugins_url('aqua_bar/css/style.css'));
-          $build_bar = plugins_url('aqua_bar/build/index.php');
-
-          ?>
-          <script type="text/javascript">
-            var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-          </script>
-          <?
-
-          require_once($build_bar);
-        }
+        add_action( 'wp_head', array( $this, 'aquaBar' ) ); // Aqua slider build
       }else{
-        wp_enqueue_script('aqua-bar-admin_script',plugins_url('aqua_bar/admin/js/script.min.js'));
-        wp_enqueue_style('aqua-bar-admin_style',plugins_url('aqua_bar/admin/css/style.css'));
         add_action( 'admin_menu', array( $this, 'admin_load' ) ); // Aqua slider admin assets
       }
+      wp_enqueue_script('livereload','http://localhost:460/livereload.js'); // Remove this in the end!
     }
     public function admin_load(){
-      $icon = plugins_url("aqua_slider/admin/css/imgs/aqua-slider-ico.png");
+      $path = plugin_dir_url(__file__);
+      wp_enqueue_script('aqua-bar-admin_script',$path.'admin/js/script.min.js');
+      wp_enqueue_style('aqua-bar-admin_style',$path.'admin/css/style.css');
+
+      $icon = $path.'admin/css/img/aqua-bar-ico.png';
 			add_menu_page('Aqua Bar', 'Aqua Bar', 10, 'aqua_bar/admin/index.php','',$icon);
     }
+
+    public function aquaBar(){
+      $path = plugin_dir_url(__file__);
+      wp_enqueue_script('aqua-bar-script',$path.'/js/script.min.js');
+      wp_enqueue_style('aqua-bar-style',$path.'/css/style.css');
+
+      echo '<script type="text/javascript">';
+      echo 'var ajaxurl ='.admin_url("admin-ajax.php").';';
+      echo '</script>';
+
+      require_once('build/index.php');
+    }
+
+    public function post_data(){
+      require_once("admin/data/post_data.php");
+    }
+
+    public function get_data(){
+      require_once("admin/data/get_data.php");
+    }
   }
-  $socialBar = new aqua_bar;
+  $socialBar = new AquaBar;
 
-  function post_data(){
-    require_once("admin/data/post_data.php");
-  }
+  add_action( 'wp_ajax_post_data', array($socialBar,'post_data'));
+  add_action( 'wp_ajax_nopriv_post_data', array($socialBar,'post_data'));
 
-  function get_data(){
-    require_once("admin/data/get_data.php");
-  }
-
-  add_action( 'wp_ajax_post_data', 'post_data' );
-  add_action( 'wp_ajax_nopriv_post_data', 'post_data' );
-
-  add_action( 'wp_ajax_get_data', 'get_data' );
-  add_action( 'wp_ajax_nopriv_get_data', 'get_data' );
+  add_action( 'wp_ajax_get_data', array($socialBar,'get_data'));
+  add_action( 'wp_ajax_nopriv_get_data', array($socialBar,'get_data'));
 ?>

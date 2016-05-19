@@ -12,16 +12,16 @@
         var json = JSON.parse(data);
         var breaker = json.social.split(";");
 
-        var facebook = false,twitter = false,google = false,linkedin = false;
+        var facebook = "false",twitter = "false",google = "false",linkedin = "false";
         $.each(breaker,function(index,item){
           if(item == "facebook")
-            facebook = true;
+            facebook = "true";
           if(item == "twitter")
-            twitter = true;
+            twitter = "true";
           if(item == "linkedin")
-            linkedin = true;
+            linkedin = "true";
           if(item == "google")
-            google = true;
+            google = "true";
         });
         var obj_config = {
             "color":json.color,
@@ -31,6 +31,7 @@
             "linkedin":linkedin,
             "google":google
         };
+
         $("#aqua-bar-container").aquaBar(obj_config);
       });
     });

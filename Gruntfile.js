@@ -59,6 +59,18 @@ module.exports = function(grunt){
           'admin/css/style.css':'admin/sass/style.scss'
         },
       },
+    },
+    clean:{
+        build:{
+          src:'dist'
+        }
+    },
+    copy:{
+      main:{
+          expand:true,
+          src:['admin/**','build/**','css/**','js/**','vendor/**','aqua_bar.php'],
+          dest:'dist'
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-sass');
@@ -68,5 +80,6 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('default',['watch']);
+  grunt.registerTask('default',['watch']); // Para desenvolvimento!
+  grunt.registerTask('gerarApp',['clean','copy']); // Para produção!
 }

@@ -19,10 +19,10 @@
       var conf = {
         height: obj.height || "25",
         background: obj.color || "#00917C",
-        facebook: obj.facebook || true,
-        twitter: obj.twitter ||true,
-        google: obj.google || true,
-        linkedin: obj.linkedin || true
+        facebook: obj.facebook || "false",
+        twitter: obj.twitter || "false",
+        google: obj.google || "false",
+        linkedin: obj.linkedin || "false"
       };
 
       // Set Config
@@ -34,13 +34,6 @@
         height:conf.height+"px"
       });
 
-      //Create the logo!
-      var logo = $("<div>");
-      logo.prop("id","logo-social-bar");
-      bar.append(logo);
-      var url = "http://www.cruzeirodosuleducacional.edu.br/";
-      bar.children("#logo-social-bar").wrap("<a href='"+url+"'></a>");
-
       // Function to create a social button
       function create_social_btn(type){
         var click = $("<div>");
@@ -48,21 +41,21 @@
         bar.append(click);
       }
       var the_url = window.location.href; // Url ---
-      if(conf.facebook === true){
+      if(conf.facebook == "true"){
         create_social_btn("facebook");
         bar.on('click','.facebook-social-btn',function(){
           var self = $(this);
           window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(the_url),"facebook-share","width=400&height=200");
         });
       }
-      if(conf.twitter === true){
+      if(conf.twitter == "true"){
         create_social_btn("twitter");
         bar.on('click','.twitter-social-btn',function(){
           var self = $(this);
           window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(the_url),"twitter-share","width=400&height=200");
         });
       }
-      if(conf.linkedin === true){
+      if(conf.linkedin == "true"){
         create_social_btn("linkedin");
         bar.on('click','.linkedin-social-btn',function(){
           var self = $(this);
@@ -70,7 +63,7 @@
         });
       }
 
-      if(conf.google === true){
+      if(conf.google == "true"){
         create_social_btn("google");
         bar.on('click','.google-social-btn',function(){
           var self = $(this);
@@ -117,7 +110,6 @@
           top:"0%"
         },600);
       },500);
-
       return bar;
     }
   });
