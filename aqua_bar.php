@@ -2,8 +2,8 @@
   /*
     Plugin Name: Aqua Bar
     Description: Plugin social bar
-    Author: Grupo Cruzeiro do sul
-    Author Uri: http://www.cruzeirodosuleducacional.edu.br/
+    Author: Magnorion
+    Author Uri: http://github.com/magnorion/aquaBar
     Version: 1.0
   */
 
