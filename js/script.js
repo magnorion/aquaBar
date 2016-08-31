@@ -45,7 +45,7 @@
         create_social_btn("facebook");
         bar.on('click','.facebook-social-btn',function(){
           var self = $(this);
-          window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(the_url),"facebook-share","width=400&height=200");
+          window.open("https://www.facebook.com/sharer.php?u="+encodeURIComponent(the_url),"facebook-share","width=400&height=200");
         });
       }
       if(conf.twitter == "true"){

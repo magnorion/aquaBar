@@ -3,7 +3,7 @@
     Plugin Name: Aqua Bar
     Description: Plugin social bar
     Author: Magnorion
-    Author Uri: http://github.com/magnorion/aquaBar
+    Author Uri: http://github.com/magnorion
     Version: 1.0
   */
 
